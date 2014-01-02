@@ -55,6 +55,7 @@ import hudson.model.queue.QueueTaskFuture;
 import hudson.model.queue.SubTask;
 import hudson.model.queue.SubTaskContributor;
 import hudson.plugins.project_inheritance.projects.InheritanceProject.Relationship.Type;
+import hudson.plugins.project_inheritance.projects.actions.FilteredTransientActionFactoryHelper;
 import hudson.plugins.project_inheritance.projects.actions.VersioningAction;
 import hudson.plugins.project_inheritance.projects.creation.ProjectCreationEngine;
 import hudson.plugins.project_inheritance.projects.creation.ProjectCreationEngine.TriggerInheritance;
@@ -2911,7 +2912,7 @@ public class InheritanceProject	extends Project<InheritanceProject, InheritanceB
 			ta.addAll(p.getJobActions(this));
 		}
 		
-		for (TransientProjectActionFactory tpaf : TransientProjectActionFactory.all()) {
+		for (TransientProjectActionFactory tpaf : FilteredTransientActionFactoryHelper.all()) {
 			ta.addAll(Util.fixNull(tpaf.createFor(this))); // be defensive against null
 		}
 		// END Implementation from AbstractProject
