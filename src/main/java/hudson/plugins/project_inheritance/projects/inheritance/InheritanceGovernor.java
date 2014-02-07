@@ -65,7 +65,7 @@ import org.kohsuke.stapler.StaplerRequest;
  * @param <T> the target type of the field this helper is written for.
  */
 public abstract class InheritanceGovernor<T> {
-	public static final Pattern runUriRegExp = Pattern.compile(".*/job/[^/]+/[0-9]+/.*");
+  public static final Pattern runUriRegExp = Pattern.compile(".*/job/[^/]+/(?!configure)(?!createItem)(?!configSubmit).*");
 	
 	public final String fieldName;
 	public final SELECTOR orderMode;
